@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faize Mens Saloon | Premium Men's Grooming</title>
+    <meta name="description"
+        content="Premium men's grooming salon offering expert haircuts, beard care, facials, and luxury treatments.">
+    <meta name="theme-color" content="#c8a96e">
+    <meta property="og:title" content="Faize Mens Saloon | Premium Men's Grooming">
+    <meta property="og:description"
+        content="Experience the finest haircuts, beard grooming, and luxury treatments in a space crafted exclusively for the modern gentleman.">
+    <meta property="og:image"
+        content="https://raw.githubusercontent.com/mohdnihadkp1/GALLERY/refs/heads/main/Faize%20Mens%20Saloon/logo.jpg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-card: #1a1a1a;
+            --accent-gold: #c8a96e;
+            --accent-gold-light: #e8c98e;
+            --accent-gold-dark: #a07840;
+            --text-primary: #f5f0e8;
+            --text-secondary: #b0a090;
+            --border-color: rgba(200, 169, 110, 0.2);
+            --overlay-dark: rgba(0, 0, 0, 0.72);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility Classes */
+        .gold-text {
+            color: var(--accent-gold);
+        }
+
+        .muted-text {
+            color: var(--text-secondary);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 2px solid var(--accent-gold);
+        }
+
+        .btn-filled {
+            background-color: var(--accent-gold);
+            color: #0a0a0a;
+        }
+
+        .btn-filled:hover {
+            background-color: var(--accent-gold-light);
+            transform: scale(1.03);
+        }
+
+        .btn-outlined {
+            background-color: transparent;
+            color: var(--accent-gold);
+        }
+
+        .btn-outlined:hover {
+            background-color: rgba(200, 169, 110, 0.1);
+            transform: scale(1.03);
+        }
+
+        .gold-label {
+            display: inline-block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        header.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 15px 5%;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo img {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-gold);
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0%;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Scroll Animation Section */
+        .hero-scroll-container {
+            height: 400vh;
+            position: relative;
+        }
+
+        .sticky-hero {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            background-color: var(--bg-primary);
+        }
+
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.60) 0%, rgba(10, 10, 10, 0.85) 100%);
+            animation: breath 6s infinite alternate ease-in-out;
+            z-index: 1;
+        }
+
+        @keyframes breath {
+            0% {
+                opacity: 0.85;
+            }
+
+            100% {
+                opacity: 0.95;
+            }
+        }
+
+        .hero-text-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            z-index: 10;
+            padding: 0 20px;
+        }
+
+        .hero-text-block {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            pointer-events: none;
+        }
+
+        .hero-text-block.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .shimmer-text {
+            background: linear-gradient(90deg, #c8a96e 0%, #fff 50%, #c8a96e 100%);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shimmer 3s linear infinite;
+            font-size: clamp(2.8rem, 6vw, 5.5rem);
+            line-height: 1.1;
+            margin: 15px 0;
+            text-shadow: 0px 4px 15px rgba(200, 169, 110, 0.2);
+        }
+
+        @keyframes shimmer {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .hero-text-block p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin: 0 auto 30px auto;
+        }
+
+        .gold-line {
+            width: 60px;
+            height: 2px;
+            background-color: var(--accent-gold);
+            margin: 20px auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--accent-gold);
+            font-size: 2rem;
+            z-index: 10;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0) translateX(-50%);
+            }
+
+            40% {
+                transform: translateY(-15px) translateX(-50%);
+            }
+
+            60% {
+                transform: translateY(-7px) translateX(-50%);
+            }
+        }
+
+        /* Intro Strip */
+        .intro-strip {
+            background-color: #0f0f0f;
+            padding: 40px 5%;
+            border-top: 1px solid var(--accent-gold-dark);
+            border-bottom: 1px solid var(--accent-gold-dark);
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .stat-card {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .stat-card i {
+            font-size: 2rem;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+
+        .stat-card h3 {
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 100px 5%;
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .hours-badge {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .hours-badge i {
+            font-size: 2rem;
+            color: var(--accent-gold);
+        }
+
+        .inline-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .inline-links a {
+            color: var(--accent-gold);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .inline-links a:hover {
+            color: var(--accent-gold-light);
+        }
+
+        .about-images {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .about-images img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .about-images img:hover {
+            border-color: var(--accent-gold);
+            transform: scale(1.02);
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 100px 5%;
+            background-color: var(--bg-secondary);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background-color: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 10px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active,
+        .tab-btn:hover {
+            background-color: var(--accent-gold);
+            color: #0a0a0a;
+            border-color: var(--accent-gold);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card:hover {
+            border-color: rgba(200, 169, 110, 0.5);
+            box-shadow: 0 10px 30px rgba(200, 169, 110, 0.1);
+            transform: translateY(-8px);
+        }
+
+        .service-img {
+            height: 180px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .service-img-placeholder {
+            height: 180px;
+            width: 100%;
+            background-color: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--accent-gold-dark);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .service-body {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .service-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            line-height: 1.3;
+        }
+
+        .service-price {
+            background-color: var(--accent-gold);
+            color: #0a0a0a;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+
+        .service-desc {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .service-btn {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-btn:hover {
+            background-color: rgba(200, 169, 110, 0.1);
+        }
+
+        /* Instagram Section */
+        .instagram-section {
+            padding: 100px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .ig-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .ig-card {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .ig-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            bottom: -2px;
+            left: -2px;
+            right: -2px;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            z-index: -1;
+            border-radius: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .ig-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .ig-card:hover::before {
+            opacity: 1;
+        }
+
+        .ig-card i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ig-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .ig-card .handle {
+            color: var(--accent-gold);
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 100px 5%;
+            background-color: var(--bg-secondary);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto 50px auto;
+        }
+
+        .test-card {
+            background-color: var(--bg-card);
+            padding: 40px 30px;
+            border-radius: 12px;
+            position: relative;
+            border: 1px solid var(--border-color);
+        }
+
+        .test-card .quote-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: rgba(200, 169, 110, 0.15);
+            font-size: 3rem;
+        }
+
+        .stars {
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .test-card p {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .test-card .name {
+            color: var(--accent-gold);
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 60px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-map {
+            flex: 1;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .contact-list i {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .wa-main-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #25d366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            transition: background 0.3s ease;
+        }
+
+        .wa-main-btn:hover {
+            background-color: #1ebe5d;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 380px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--accent-gold);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #080808;
+            border-top: 1px solid var(--accent-gold-dark);
+            padding: 60px 5% 20px 5%;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto 40px auto;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 15px;
+        }
+
+        .footer-brand h3 {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            max-width: 300px;
+            margin-top: 15px;
+        }
+
+        .footer-links h4,
+        .footer-connect h4 {
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--accent-gold);
+            color: #0a0a0a;
+            transform: scale(1.1);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(200, 169, 110, 0.2);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 0.85rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: var(--bg-card);
+            width: 90%;
+            max-width: 500px;
+            border-radius: 16px;
+            border: 1px solid rgba(200, 169, 110, 0.4);
+            padding: 40px;
+            position: relative;
+            transform: scale(0.9);
+            transition: all 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .modal-content h2 {
+            color: var(--accent-gold);
+            margin-bottom: 5px;
+        }
+
+        .modal-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            color: white;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        optgroup {
+            background-color: var(--bg-primary);
+            color: var(--accent-gold);
+        }
+
+        option {
+            color: white;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--bg-card);
+            border-left: 4px solid var(--accent-gold);
+            padding: 15px 25px;
+            border-radius: 6px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 3000;
+            transition: bottom 0.5s ease;
+            font-weight: 500;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toast.show {
+            bottom: 30px;
+        }
+
+        /* Mobile Floating WA */
+        .mobile-wa-btn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            animation: pulse-green 2s infinite;
+        }
+
+        @keyframes pulse-green {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+
+            .testimonials-grid,
+            .ig-cards {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: flex;
+                position: fixed;
+                top: 0; left: 100%;
+                width: 100%; height: 100vh;
+                background-color: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(15px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 0;
+                transition: left 0.4s ease-in-out;
+                z-index: 999;
+            }
+            .nav-links.active { left: 0; }
+            .nav-links li { width: 100%; text-align: center; }
+            .nav-links a { font-size: 1.8rem; display: block; padding: 20px; }
+            .menu-toggle { display: block; z-index: 1000; position: relative; }
+            
+            /* Spacing overrides for comfort */
+            .about-section, .services-section, .instagram-section, .testimonials-section, .contact-section {
+                padding: 60px 5%;
+            }
+            .contact-section { padding-bottom: 120px; } /* clear floating btn */
+            
+            /* Typography adjustments */
+            .shimmer-text { font-size: clamp(2.2rem, 8vw, 3rem); line-height: 1.2; }
+            .section-header h2, .about-text h2, .contact-info h2 { font-size: 2rem; }
+            .hero-text-block p { font-size: 0.95rem; margin-bottom: 20px; }
+            
+            .hero-buttons { flex-direction: column; width: 100%; gap: 15px; }
+            .hero-buttons .btn { width: 100%; }
+            
+            .about-section, .contact-section { flex-direction: column; }
+            .about-images { margin-top: 30px; }
+            
+            .footer-grid, .testimonials-grid, .ig-cards { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+            
+            .tabs-container {
+                justify-content: flex-start;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 15px;
+                margin-bottom: 25px;
+            }
+            .tab-btn { font-size: 0.95rem; padding: 12px 20px; white-space: nowrap; }
+            
+            .mobile-wa-btn { display: flex; }
+            
+            /* Full screen modal on mobile */
+            .modal-content {
+                width: 100%; height: 100%; max-height: 100vh;
+                border-radius: 0; padding: 40px 20px;
+            }
+            .form-control, .btn { font-size: 16px; } /* Prevents iOS auto-zoom on inputs */
+            
+            .intro-strip { gap: 30px; }
+            .stat-card h3 { font-size: 1.8rem; }
+        }
+
+        /* --- ADVANCED EXTRA STYLES --- */
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-gold); }
+
+        /* Custom Cursor */
+        @media (pointer: fine) {
+            .cursor-dot, .cursor-outline {
+                position: fixed;
+                top: 0; left: 0;
+                transform: translate(-50%, -50%);
+                border-radius: 50%;
+                z-index: 9999;
+                pointer-events: none;
+            }
+            .cursor-dot {
+                width: 8px; height: 8px;
+                background-color: var(--accent-gold);
+            }
+            .cursor-outline {
+                width: 40px; height: 40px;
+                border: 1px solid var(--accent-gold-light);
+                transition: width 0.2s, height 0.2s, background-color 0.2s;
+            }
+            body { cursor: none; }
+            a, button, input, select, textarea { cursor: none; }
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background-color: var(--bg-primary);
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .loader-content { text-align: center; }
+        .loader-line {
+            width: 100px; height: 2px;
+            background-color: rgba(200, 169, 110, 0.2);
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .loader-line::after {
+            content: '';
+            position: absolute;
+            left: -50px; top: 0;
+            width: 50px; height: 100%;
+            background-color: var(--accent-gold);
+            animation: loading 1.5s infinite ease-in-out;
+        }
+        @keyframes loading {
+            0% { left: -50px; }
+            100% { left: 100px; }
+        }
+
+        /* Noise Overlay */
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0.03;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+        }
+
+        /* Tilt smooth transition */
+        .service-card, .ig-card, .test-card {
+            transition: transform 0.1s ease, box-shadow 0.1s ease, border-color 0.4s ease !important;
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Advanced Features -->
+    <div class="noise-overlay"></div>
+    <div class="preloader" id="preloader">
+        <div class="loader-content">
+            <h2 class="shimmer-text" style="font-size: 3rem;">Faize</h2>
+            <div class="loader-line"></div>
+        </div>
+    </div>
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="logo">
+            <img src="https://raw.githubusercontent.com/mohdnihadkp1/GALLERY/refs/heads/main/Faize%20Mens%20Saloon/logo.jpg"
+                alt="Faize Mens Saloon">
+        </div>
+        <nav>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button class="btn btn-outlined" style="padding: 10px 20px;" onclick="openModal()">Book Now</button>
+                </li>
+            </ul>
+        </nav>
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </header>
+
+    <!-- Hero Section with Canvas Scroll Animation -->
+    <section id="home" class="hero-scroll-container">
+        <div class="sticky-hero">
+            <canvas id="hero-canvas"></canvas>
+            <div class="hero-overlay"></div>
+
+            <div class="hero-text-container">
+                <!-- Text Block 1 (0-25%) -->
+                <div class="hero-text-block active" id="ht-1">
+                    <div class="gold-line"></div>
+                    <div class="gold-label">PREMIUM MEN'S GROOMING</div>
+                    <h1 class="shimmer-text">Where Style<br>Meets Precision</h1>
+                    <p>Experience the finest haircuts, beard grooming, and luxury treatments in a space crafted
+                        exclusively for the modern gentleman.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-filled" onclick="openModal()">Book Appointment</button>
+                        <a href="#services" class="btn btn-outlined">Explore Services</a>
+                    </div>
+                    <div class="gold-line"></div>
+                </div>
+
+                <!-- Text Block 2 (25-50%) -->
+                <div class="hero-text-block" id="ht-2">
+                    <div class="gold-label">CRAFTED FOR YOU</div>
+                    <h1 class="shimmer-text">Masterful Haircuts</h1>
+                    <p>Precision fades, classic cuts, and modern styling tailored to elevate your personal style.</p>
+                    <button class="btn btn-filled" onclick="openModal()">Book A Cut</button>
+                </div>
+
+                <!-- Text Block 3 (50-75%) -->
+                <div class="hero-text-block" id="ht-3">
+                    <div class="gold-label">THE GENTLEMAN'S CHOICE</div>
+                    <h1 class="shimmer-text">Luxury Beard Grooming</h1>
+                    <p>Sharp, defined, and perfectly conditioned. Because your beard deserves the best.</p>
+                    <button class="btn btn-filled" onclick="openModal()">Book Grooming</button>
+                </div>
+
+                <!-- Text Block 4 (75-100%) -->
+                <div class="hero-text-block" id="ht-4">
+                    <div class="gold-label">RELAX & REJUVENATE</div>
+                    <h1 class="shimmer-text">Premium Treatments</h1>
+                    <p>Revitalizing facials, detan treatments, and hair spas for the ultimate grooming experience.</p>
+                    <button class="btn btn-filled" onclick="openModal()">Explore Treatments</button>
+                </div>
+            </div>
+
+            <div class="scroll-indicator">
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro Strip -->
+    <section class="intro-strip reveal counters-container">
+        <div class="stat-card">
+            <i class="fa-solid fa-scissors"></i>
+            <h3><span class="counter" data-target="10">0</span>+ Years</h3>
+            <p class="muted-text">of Expert Grooming</p>
+        </div>
+        <div class="stat-card">
+            <i class="fa-solid fa-crown"></i>
+            <h3><span class="counter" data-target="5000">0</span>+</h3>
+            <p class="muted-text">Happy Clients</p>
+        </div>
+        <div class="stat-card">
+            <i class="fa-solid fa-star"></i>
+            <h3><span class="counter" data-target="4.9">0</span> Rating</h3>
+            <p class="muted-text">Google Reviews</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section reveal">
+        <div class="about-text">
+            <span class="gold-label">ABOUT US</span>
+            <h2>Crafted for the Modern Gentleman</h2>
+            <div class="gold-line" style="margin: 0 0 20px 0; width: 40px;"></div>
+            <p>Welcome to <strong>Faize Mens Saloon</strong> — where every visit is an experience, not just a haircut.
+                We combine traditional barbering artistry with modern grooming techniques to deliver results that speak
+                for themselves.</p>
+            <p>Our team of skilled professionals is dedicated to making you look your absolute best — from a sharp fade
+                to a luxurious facial treatment. Step in as a client, leave as a king.</p>
+
+            <div class="hours-badge">
+                <i class="fa-regular fa-clock"></i>
+                <div>
+                    <div style="font-weight: 600; font-size: 1.1rem;">We're Open</div>
+                    <div class="muted-text">Monday to Sunday | 9:00 AM – 10:00 PM</div>
+                </div>
+            </div>
+
+            <div class="inline-links">
+                <a href="https://maps.app.goo.gl/2XyLRjp6GWFJvmr6A?g_st=awb" target="_blank"><i
+                        class="fa-solid fa-location-dot"></i> Get Directions</a>
+                <a href="https://share.google/hdOBZpY9rnFNsRcq6" target="_blank"><i class="fa-solid fa-star"></i> Leave
+                    a Google Review</a>
+            </div>
+        </div>
+        <div class="about-images">
+            <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" alt="Haircut"
+                loading="lazy">
+            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&q=80" alt="Salon Tools"
+                loading="lazy">
+            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80" alt="Facial"
+                loading="lazy">
+            <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=600&q=80" alt="Interior"
+                loading="lazy">
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section reveal">
+        <div class="section-header">
+            <span class="gold-label">OUR SERVICES</span>
+            <h2>Premium Grooming Menu</h2>
+            <p class="muted-text">Every service delivered with precision, craft, and care.</p>
+        </div>
+
+        <div class="tabs-container" id="tabs">
+            <button class="tab-btn active" data-filter="All">All</button>
+            <button class="tab-btn" data-filter="Hair Services">Hair Services</button>
+            <button class="tab-btn" data-filter="Face Treatment">Face Treatment</button>
+            <button class="tab-btn" data-filter="Hair Color">Hair Color</button>
+            <button class="tab-btn" data-filter="Beard Color">Beard Color</button>
+            <button class="tab-btn" data-filter="Rebonding & Straightening">Rebonding & Straightening</button>
+            <button class="tab-btn" data-filter="Facial Treatment">Facial Treatment</button>
+            <button class="tab-btn" data-filter="Hair Spa">Hair Spa</button>
+            <button class="tab-btn" data-filter="Mustache">Mustache</button>
+        </div>
+
+        <div class="services-grid" id="services-grid">
+            <!-- Services injected via JS -->
+        </div>
+    </section>
+
+    <!-- Instagram Gallery -->
+    <section id="gallery" class="instagram-section reveal">
+        <div class="section-header">
+            <span class="gold-label">SOCIAL</span>
+            <h2>Follow Our Work</h2>
+            <p class="muted-text">Transformations that speak for themselves.</p>
+        </div>
+
+        <div class="ig-cards">
+            <div class="ig-card">
+                <i class="fa-brands fa-instagram"></i>
+                <h3>Bride's By Team Faize</h3>
+                <span class="handle">@brides_by_team_faize</span>
+                <p class="muted-text mb-4">Bridal grooming, makeup, and styling for beautiful brides.</p>
+                <a href="https://www.instagram.com/brides_by_team_faize?igsh=YnNxYzBqbjN0eHEz" target="_blank"
+                    class="btn btn-outlined mt-3">Follow on Instagram</a>
+            </div>
+            <div class="ig-card">
+                <i class="fa-brands fa-instagram"></i>
+                <h3>Groom By Team Faize</h3>
+                <span class="handle">@groom_by_team_faize</span>
+                <p class="muted-text mb-4">Premium groom styling, sherwani-ready grooming, and bridal party packages.
+                </p>
+                <a href="https://www.instagram.com/groom_by_team_faize?igsh=MTFwMGVjaXp1bmNodQ==" target="_blank"
+                    class="btn btn-outlined mt-3">Follow on Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section reveal">
+        <div class="section-header">
+            <span class="gold-label">TESTIMONIALS</span>
+            <h2>What Our Clients Say</h2>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="test-card">
+                <i class="fa-solid fa-quote-left quote-icon"></i>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Best barbershop in town. The haircut was clean and the beard trim was spot on. The ambiance makes
+                    you feel premium from the moment you walk in."</p>
+                <div class="name">Arjun M.</div>
+            </div>
+            <div class="test-card">
+                <i class="fa-solid fa-quote-left quote-icon"></i>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Got the L'Oreal hair color done and it looked absolutely stunning. Team Faize knows exactly how to
+                    enhance your natural features. Highly recommended!"</p>
+                <div class="name">Rahul K.</div>
+            </div>
+            <div class="test-card">
+                <i class="fa-solid fa-quote-left quote-icon"></i>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"The facial treatment was incredibly relaxing. Staff is professional and courteous. The salon is
+                    spotlessly clean. Will definitely be back every month."</p>
+                <div class="name">Shafeeq A.</div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <p class="mb-4" style="font-size: 1.2rem;">Love your experience? Share it with the world.</p>
+            <a href="https://share.google/hdOBZpY9rnFNsRcq6" target="_blank" class="btn btn-filled btn-lg">Leave a
+                Google Review</a>
+        </div>
+    </section>
+
+    <!-- Contact & Map -->
+    <section id="contact" class="contact-section reveal">
+        <div class="contact-info">
+            <span class="gold-label">CONTACT US</span>
+            <h2>Get In Touch</h2>
+            <ul class="contact-list">
+                <li><i class="fa-solid fa-phone"></i> <a href="tel:+919656860989">+91 96568 60989</a></li>
+                <li><i class="fa-regular fa-clock"></i> 9:00 AM – 10:00 PM, Mon–Sun</li>
+                <li><i class="fa-solid fa-location-dot"></i> <a
+                        href="https://maps.app.goo.gl/2XyLRjp6GWFJvmr6A?g_st=awb" target="_blank">Faize Mens Saloon,
+                        Chaliyam</a></li>
+                <li><i class="fa-brands fa-instagram"></i> <a href="https://www.instagram.com/brides_by_team_faize"
+                        target="_blank">@brides_by_team_faize</a></li>
+                <li><i class="fa-brands fa-instagram"></i> <a href="https://www.instagram.com/groom_by_team_faize"
+                        target="_blank">@groom_by_team_faize</a></li>
+            </ul>
+            <a href="https://wa.me/919656860989" target="_blank" class="wa-main-btn">
+                <i class="fa-brands fa-whatsapp" style="font-size: 1.5rem;"></i> Chat With Us on WhatsApp
+            </a>
+        </div>
+        <div class="contact-map">
+            <div class="map-container">
+                <iframe src="https://maps.google.com/maps?q=Faize+Mens+Saloon+Chaliyam&output=embed" width="100%"
+                    height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="https://raw.githubusercontent.com/mohdnihadkp1/GALLERY/refs/heads/main/Faize%20Mens%20Saloon/logo.jpg"
+                    alt="Logo" class="logo"
+                    style="width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--accent-gold);">
+                <h3 style="font-family: 'Playfair Display', serif;">Faize Mens Saloon</h3>
+                <div class="gold-label" style="font-size: 0.75rem;">Where Style Meets Precision</div>
+                <p>Premium men's grooming salon offering expert haircuts, beard care, facials, and luxury treatments.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="javascript:void(0)" onclick="openModal()">Book Now</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-connect">
+                <h4>Connect With Us</h4>
+                <p class="muted-text mb-2"><i class="fa-solid fa-phone gold-text mr-2"></i> <a
+                        href="tel:+919656860989">+91 96568 60989</a></p>
+                <p class="muted-text"><i class="fa-regular fa-clock gold-text mr-2"></i> 9:00 AM – 10:00 PM</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/brides_by_team_faize" target="_blank"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/groom_by_team_faize" target="_blank"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="https://wa.me/919656860989" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://maps.app.goo.gl/2XyLRjp6GWFJvmr6A?g_st=awb" target="_blank"><i
+                            class="fa-solid fa-location-dot"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2025 Faize Mens Saloon. All Rights Reserved.</div>
+            <div>Crafted with ♥ for Gentleman</div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div class="modal-overlay" id="booking-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem;">Book Your Appointment</h2>
+            <p>Fill in your details and we'll confirm via WhatsApp</p>
+
+            <form id="booking-form">
+                <div class="form-group">
+                    <label>Your Name *</label>
+                    <input type="text" id="book-name" class="form-control" placeholder="Enter your full name" required
+                        minlength="2">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" id="book-phone" class="form-control" placeholder="Your contact number" required
+                        pattern="[0-9]{10,}">
+                </div>
+                <div class="form-group">
+                    <label>Select Service *</label>
+                    <select id="book-service" class="form-control" required>
+                        <option value="" disabled selected>Select a service...</option>
+                        <!-- Options injected via JS -->
+                    </select>
+                </div>
+                <div class="form-group" style="display: flex; gap: 15px;">
+                    <div style="flex: 1;">
+                        <label>Preferred Date *</label>
+                        <input type="date" id="book-date" class="form-control" required>
+                    </div>
+                    <div style="flex: 1;">
+                        <label>Preferred Time *</label>
+                        <input type="time" id="book-time" class="form-control" required min="09:00" max="22:00"
+                            step="1800">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Additional Notes</label>
+                    <textarea id="book-notes" class="form-control" rows="3"
+                        placeholder="Any special requests or notes..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-filled" style="width: 100%; margin-top: 10px;">Confirm
+                    Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Mobile Floating WhatsApp Button -->
+    <a href="https://wa.me/919656860989" target="_blank" class="mobile-wa-btn">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Main Logic Script -->
+    <script>
+        // --- DATA ---
+        const servicesData = [
+            // Hair Services
+            { category: "Hair Services", name: "Hair Cut", desc: "Clean and stylish cut tailored to your look.", price: "₹150", img: "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" },
+            { category: "Hair Services", name: "Beard", desc: "Sharp and defined beard shaping.", price: "₹110", img: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80" },
+            { category: "Hair Services", name: "Zero Trimming", desc: "Fresh haircut with perfectly shaped beard.", price: "₹50", img: "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" },
+            { category: "Hair Services", name: "Child Cut", desc: "Gentle and stylish cut for kids.", price: "₹150", img: "" },
+            { category: "Hair Services", name: "Long Hair Cut", desc: "Specialized trimming and styling for maintaining and shaping longer men's hair.", price: "₹200", img: "" },
+            { category: "Hair Services", name: "Layer Cut", desc: "Textured haircut adding volume and movement through layered lengths.", price: "₹250", img: "" },
+            { category: "Hair Services", name: "Hair Donation Cut", desc: "Specific cut designed to safely harvest hair for charitable donation.", price: "₹300", img: "" },
+            { category: "Hair Services", name: "Hair Setting", desc: "Professional styling using products and heat to lock your desired hairstyle in place.", price: "₹80", img: "" },
+            { category: "Hair Services", name: "Dandruff Treatment", desc: "Deep cleansing and medicated scalp treatment to eliminate flakes and soothe irritation.", price: "₹750", img: "" },
+            { category: "Hair Services", name: "Threading", desc: "Precise hair removal using a thread loop for eyebrows and facial detailing.", price: "₹80", img: "" },
+
+            // Face Treatment
+            { category: "Face Treatment", name: "Scrub", desc: "Exfoliating facial treatment to remove dead skin cells and unclog pores.", price: "₹200", img: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&q=80" },
+            { category: "Face Treatment", name: "Scrub + Streamer", desc: "Deep pore cleansing combining an exfoliating scrub with warm steam to open pores.", price: "₹300", img: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&q=80" },
+            { category: "Face Treatment", name: "Cleanup", desc: "A quick revitalizing facial routine including cleansing, toning, and light moisturizing.", price: "₹350", img: "" },
+            { category: "Face Treatment", name: "D-Tan", desc: "Targeted treatment to remove sun tan and restore a natural, even skin tone.", price: "₹450", img: "" },
+            { category: "Face Treatment", name: "Charcoal Mask", desc: "Detoxifying face mask that draws out impurities and excess oil from the skin.", price: "₹350", img: "" },
+            { category: "Face Treatment", name: "Face Pack", desc: "Nourishing skin treatment using a hydrating or purifying paste applied to the face.", price: "₹350", img: "" },
+            { category: "Face Treatment", name: "Nose Strip", desc: "Adhesive strip treatment specifically for extracting blackheads from the nose area.", price: "₹60", img: "" },
+
+            // Hair Color
+            { category: "Hair Color", name: "Black Henna", desc: "Natural henna-based dye application for a rich, dark hair color.", price: "₹320", img: "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&q=80" },
+            { category: "Hair Color", name: "Apple Hair Color", desc: "Application of Apple brand hair color for vibrant and long-lasting look.", price: "₹380", img: "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&q=80" },
+            { category: "Hair Color", name: "Garnier Hair Color", desc: "Professional application of Garnier color products for vibrant hair.", price: "₹450", img: "" },
+            { category: "Hair Color", name: "L'Oreal Hair Color", desc: "Premium hair coloring service using L'Oreal professional products.", price: "₹600", img: "" },
+            { category: "Hair Color", name: "Bigen Color", desc: "Water-activated permanent powder hair color for gray coverage.", price: "₹550", img: "" },
+            { category: "Hair Color", name: "Nisha Hair Colour", desc: "Application of Nisha brand hair dye for smooth and natural-looking color.", price: "₹450", img: "" },
+            { category: "Hair Color", name: "Hair Color Apply", desc: "Basic service charge for applying customer-provided or standard hair color.", price: "₹100", img: "" },
+
+            // Beard Color
+            { category: "Beard Color", name: "Black Henna (Beard)", desc: "Natural dark tinting for the beard using pure black henna.", price: "₹200", img: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80" },
+            { category: "Beard Color", name: "Apple Beard", desc: "Beard coloring service using Apple brand dye for a uniform look.", price: "₹220", img: "" },
+            { category: "Beard Color", name: "Garnier Beard", desc: "Safe and effective beard coloring using Garnier products.", price: "₹250", img: "" },
+            { category: "Beard Color", name: "L'Oreal Beard", desc: "High-quality beard tinting using L'Oreal professional dyes.", price: "₹330", img: "" },
+            { category: "Beard Color", name: "Bigen Beard Colour", desc: "Long-lasting dark dye application specifically formulated for coarse beard hair.", price: "₹350", img: "" },
+            { category: "Beard Color", name: "Nose Strip (Beard)", desc: "Quick removal of blackheads around the nose area during a beard session.", price: "₹60", img: "" },
+            { category: "Beard Color", name: "Ear Wax", desc: "Safe removal of unwanted hair from the outer ear canal using warm wax.", price: "₹70", img: "" },
+            { category: "Beard Color", name: "Nose Wax", desc: "Hair removal from the nostrils using hard wax for a clean look.", price: "₹90", img: "" },
+            { category: "Beard Color", name: "Ear + Cheek Wax", desc: "Comprehensive waxing service targeting fine hairs on the ears and upper cheeks.", price: "₹150", img: "" },
+
+            // Rebonding & Straightening
+            { category: "Rebonding & Straightening", name: "Front Rebonding", desc: "Rebonding treatment focused solely on the front sections of hair.", price: "₹800", img: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80" },
+            { category: "Rebonding & Straightening", name: "Half Rebonding", desc: "Partial rebonding covering the top half or specific sections.", price: "₹1000", img: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80" },
+            { category: "Rebonding & Straightening", name: "Full Rebonding", desc: "Complete hair rebonding for permanently straight, sleek hair all over.", price: "₹1500", img: "" },
+            { category: "Rebonding & Straightening", name: "Full + Black Rebonding", desc: "Full rebonding combined with a black color application.", price: "₹2000", img: "" },
+            { category: "Rebonding & Straightening", name: "Front Straightening", desc: "Chemical or heat straightening applied only to bangs or front hairline.", price: "₹700", img: "" },
+            { category: "Rebonding & Straightening", name: "Half Straightening", desc: "Straightening applied to a portion of the hair, usually top layers.", price: "₹900", img: "" },
+            { category: "Rebonding & Straightening", name: "Full Straightening", desc: "Comprehensive straightening for smooth, frizz-free hair entirely.", price: "₹1400", img: "" },
+            { category: "Rebonding & Straightening", name: "Full + Black Straightening", desc: "Complete hair straightening and black hair dye combined.", price: "₹1900", img: "" },
+
+            // Facial Treatment
+            { category: "Facial Treatment", name: "Shahnaz Husain Facial", desc: "Premium herbal facial using renowned Shahnaz Husain Ayurvedic products.", price: "₹2900", img: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80" },
+            { category: "Facial Treatment", name: "Aroma Facial", desc: "Relaxing facial therapy utilizing essential oils to rejuvenate skin and senses.", price: "₹2800", img: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80" },
+            { category: "Facial Treatment", name: "VLCC Facial", desc: "Professional facial treatment utilizing specialized VLCC skincare formulations.", price: "₹2500", img: "" },
+            { category: "Facial Treatment", name: "Naturals Facial", desc: "Gentle revitalizing facial using natural, fruit, or plant-based ingredients.", price: "₹1800", img: "" },
+
+            // Hair Spa
+            { category: "Hair Spa", name: "Hair Spa (Natures)", desc: "Deep conditioning hair spa treatment using natural-based Natures products.", price: "₹600", img: "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=600&q=80" },
+            { category: "Hair Spa", name: "Hair Spa (Schwarzkopf)", desc: "Premium hair spa therapy utilizing advanced Schwarzkopf professional formulas.", price: "₹800", img: "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=600&q=80" },
+
+            // Mustache
+            { category: "Mustache", name: "Mustache — Black Henna / Apple / Garnier", desc: "Precision coloring for the mustache using a choice of standard brands.", price: "₹50", img: "https://images.unsplash.com/photo-1505498603824-6805673827f8?w=600&q=80" },
+            { category: "Mustache", name: "Mustache — L'Oreal / Bigen", desc: "Premium mustache tinting utilizing high-end Loreal or Bigen dyes.", price: "₹100", img: "https://images.unsplash.com/photo-1505498603824-6805673827f8?w=600&q=80" }
+        ];
+
+        const categoryIcons = {
+            "Hair Services": "fa-scissors",
+            "Face Treatment": "fa-spa",
+            "Hair Color": "fa-palette",
+            "Beard Color": "fa-palette",
+            "Rebonding & Straightening": "fa-wind",
+            "Facial Treatment": "fa-spa",
+            "Hair Spa": "fa-hot-tub-person",
+            "Mustache": "fa-mars"
+        };
+
+        // --- RENDER SERVICES ---
+        function renderServices(filter = "All") {
+            const grid = document.getElementById('services-grid');
+            grid.innerHTML = '';
+
+            const filtered = filter === "All" ? servicesData : servicesData.filter(s => s.category === filter);
+
+            filtered.forEach((service, index) => {
+                const icon = categoryIcons[service.category] || "fa-star";
+                const imgHtml = service.img
+                    ? `<img src="${service.img}" alt="${service.name}" class="service-img" loading="lazy">`
+                    : `<div class="service-img-placeholder"><i class="fa-solid ${icon}"></i></div>`;
+
+                // Add staggered animation delay
+                const delay = (index % 10) * 0.05;
+
+                const html = `
+                    <div class="service-card" style="animation-delay: ${delay}s">
+                        ${imgHtml}
+                        <div class="service-body">
+                            <div class="service-header">
+                                <div class="service-title">${service.name}</div>
+                                <div class="service-price">${service.price}</div>
+                            </div>
+                            <div class="service-desc">${service.desc}</div>
+                            <button class="service-btn mt-auto" onclick="openModal('${service.name}')">Book This Service</button>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += html;
+            });
+
+            // Apply tilt to new cards
+            if (typeof applyTilt === 'function') {
+                document.querySelectorAll('.service-card').forEach(applyTilt);
+            }
+        }
+
+        // Tab Filtering
+        document.getElementById('tabs').addEventListener('click', (e) => {
+            if (e.target.classList.contains('tab-btn')) {
+                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+                renderServices(e.target.getAttribute('data-filter'));
+            }
+        });
+
+        // --- POPULATE MODAL DROPDOWN ---
+        function populateModal() {
+            const select = document.getElementById('book-service');
+            const categories = [...new Set(servicesData.map(s => s.category))];
+
+            categories.forEach(cat => {
+                const group = document.createElement('optgroup');
+                group.label = cat;
+                servicesData.filter(s => s.category === cat).forEach(s => {
+                    const opt = document.createElement('option');
+                    opt.value = s.name;
+                    opt.textContent = `${s.name} - ${s.price}`;
+                    group.appendChild(opt);
+                });
+                select.appendChild(group);
+            });
+
+            // Set date min
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('book-date').min = today;
+        }
+
+        // --- MODAL CONTROLS ---
+        function openModal(serviceName = '') {
+            document.getElementById('booking-modal').classList.add('active');
+            if (serviceName) {
+                document.getElementById('book-service').value = serviceName;
+            }
+            
+            // Auto-fill current date and time
+            const now = new Date();
+            // Format Date: YYYY-MM-DD (local time)
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            document.getElementById('book-date').value = `${year}-${month}-${day}`;
+            
+            // Format Time: HH:MM (local time)
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('book-time').value = `${hours}:${minutes}`;
+        }
+        function closeModal() {
+            document.getElementById('booking-modal').classList.remove('active');
+        }
+
+        // Form Submit
+        document.getElementById('booking-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('book-name').value;
+            const phone = document.getElementById('book-phone').value;
+            const service = document.getElementById('book-service').value;
+            const date = document.getElementById('book-date').value;
+            const time = document.getElementById('book-time').value;
+            const notes = document.getElementById('book-notes').value;
+
+            const shopPhone = "919656860989";
+            const message = `*New Appointment Request — Faize Mens Saloon*\n\n👤 *Name:* ${name}\n📱 *Phone:* ${phone}\n✂️ *Service:* ${service}\n📅 *Date:* ${date}\n⏰ *Time:* ${time}\n📝 *Notes:* ${notes || "None"}\n\n_Sent via the Faize Mens Saloon website booking form._`;
+            const encoded = encodeURIComponent(message);
+            window.open(`https://wa.me/${shopPhone}?text=${encoded}`, '_blank');
+
+            closeModal();
+            showToast("✅ Redirecting to WhatsApp... Your booking details are ready!");
+            e.target.reset();
+        });
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 4000);
+        }
+
+        // --- NAVBAR SCROLL & MOBILE MENU ---
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+
+        document.getElementById('menu-toggle').addEventListener('click', () => {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-links a').forEach(a => {
+            a.addEventListener('click', () => document.getElementById('nav-links').classList.remove('active'));
+        });
+
+        // --- INTERSECTION OBSERVER & COUNTERS ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    if (entry.target.classList.contains('counters-container')) {
+                        startCounters();
+                        observer.unobserve(entry.target);
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        function startCounters() {
+            document.querySelectorAll('.counter').forEach(counter => {
+                const target = parseFloat(counter.getAttribute('data-target'));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+
+                const update = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.innerText = target % 1 === 0 ? Math.floor(current) : current.toFixed(1);
+                        requestAnimationFrame(update);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                update();
+            });
+        }
+
+        // --- CANVAS SCROLL ANIMATION ---
+        const canvas = document.getElementById('hero-canvas');
+        const ctx = canvas.getContext('2d');
+        const totalFrames = 240;
+        const images = [];
+        const imageObj = { frame: 0 };
+
+        function getFramePath(index) {
+            return `public/images/herosection/ezgif-frame-${(index + 1).toString().padStart(3, '0')}.png`;
+        }
+
+        // Preload images
+        for (let i = 0; i < totalFrames; i++) {
+            const img = new Image();
+            img.src = getFramePath(i);
+            images.push(img);
+        }
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            renderCanvas(imageObj.frame);
+        }
+        window.addEventListener('resize', resizeCanvas);
+
+        function renderCanvas(frameIndex) {
+            let img = images[frameIndex];
+
+            // Fallback to closest loaded image if current not ready
+            if (!img || !img.complete) {
+                for (let i = frameIndex; i >= 0; i--) {
+                    if (images[i] && images[i].complete) { img = images[i]; break; }
+                }
+            }
+
+            if (img && img.complete) {
+                const hRatio = canvas.width / img.width;
+                const vRatio = canvas.height / img.height;
+                const ratio = Math.max(hRatio, vRatio);
+                const cx = (canvas.width - img.width * ratio) / 2;
+                const cy = (canvas.height - img.height * ratio) / 2;
+
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(img, 0, 0, img.width, img.height, cx, cy, img.width * ratio, img.height * ratio);
+            }
+        }
+
+        // Initial draw
+        images[0].onload = resizeCanvas;
+
+        // Scroll Logic
+        window.addEventListener('scroll', () => {
+            const container = document.querySelector('.hero-scroll-container');
+            const rect = container.getBoundingClientRect();
+            // scroll range: from rect.top = 0 to rect.bottom = innerHeight
+            const maxScroll = rect.height - window.innerHeight;
+            let progress = -rect.top / maxScroll;
+            if (progress < 0) progress = 0;
+            if (progress > 1) progress = 1;
+
+            // Frame update
+            const frame = Math.min(totalFrames - 1, Math.floor(progress * totalFrames));
+            if (frame !== imageObj.frame) {
+                imageObj.frame = frame;
+                requestAnimationFrame(() => renderCanvas(frame));
+            }
+
+            // Text Blocks update
+            const blocks = document.querySelectorAll('.hero-text-block');
+            blocks.forEach((block, index) => {
+                const start = index * 0.25;
+                const end = start + 0.25;
+                if (progress >= start && progress < end) {
+                    block.classList.add('active');
+                } else {
+                    block.classList.remove('active');
+                }
+                if (progress === 1 && index === 3) block.classList.add('active'); // keep last
+            });
+        });
+
+        // --- INIT ---
+        renderServices("All");
+        populateModal();
+
+        // --- ADVANCED EXTRA FEATURES ---
+        // 1. Preloader Hide
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('hidden');
+            }, 800);
+        });
+
+        // 2. Custom Cursor
+        if (window.matchMedia("(pointer: fine)").matches) {
+            const cursorDot = document.getElementById('cursor-dot');
+            const cursorOutline = document.getElementById('cursor-outline');
+            
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+                
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+                
+                cursorOutline.animate({
+                    left: `${posX}px`,
+                    top: `${posY}px`
+                }, { duration: 500, fill: "forwards" });
+            });
+
+            const interactiveSelectors = 'a, button, .service-card, .ig-card, input, textarea, select, .tab-btn, .close-modal';
+            document.body.addEventListener('mouseover', (e) => {
+                if (e.target.closest(interactiveSelectors)) {
+                    cursorOutline.style.width = '60px';
+                    cursorOutline.style.height = '60px';
+                    cursorOutline.style.backgroundColor = 'rgba(200, 169, 110, 0.1)';
+                }
+            });
+            document.body.addEventListener('mouseout', (e) => {
+                if (e.target.closest(interactiveSelectors)) {
+                    cursorOutline.style.width = '40px';
+                    cursorOutline.style.height = '40px';
+                    cursorOutline.style.backgroundColor = 'transparent';
+                }
+            });
+        }
+
+        // 3. Magnetic Buttons (Vanilla JS)
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                this.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px) scale(1.03)`;
+            });
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = `translate(0px, 0px) scale(1)`;
+            });
+        });
+
+        // 4. 3D Tilt Effect
+        function applyTilt(element) {
+            if (window.matchMedia("(max-width: 768px)").matches) return;
+            
+            element.addEventListener("mousemove", (e) => {
+                const rect = element.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -5;
+                const rotateY = ((x - centerX) / centerX) * 5;
+                
+                element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+            element.addEventListener("mouseleave", () => {
+                element.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+            });
+        }
+        
+        document.querySelectorAll('.ig-card, .test-card').forEach(applyTilt);
+
+    </script>
+</body>
+
+</html>
